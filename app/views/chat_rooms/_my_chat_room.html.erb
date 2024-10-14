@@ -1,1 +1,1 @@
-<li><%= chat_room.name %> <%= link_to "Leave", leave_chat_room_path(chat_room), data: { turbo_stream: true } %></li>
+<li><%= link_to chat_room.name, chat_room_messages_path(chat_room), data: { turbo_stream: true } %> <%= link_to "Leave", leave_chat_room_path(chat_room), data: { turbo_stream: true } %></li>

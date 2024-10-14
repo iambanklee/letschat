@@ -13,3 +13,7 @@
 <%= turbo_frame_tag "other_chat_rooms_area" do %>
   <%= render partial: 'chat_rooms/other_chat_rooms_area', locals: { other_chat_rooms: @other_chat_rooms } %>
 <% end  %>
+
+<div id="char_room_messages">
+  <%= turbo_frame_tag "chat_room_messages_area" %>
+</div>
