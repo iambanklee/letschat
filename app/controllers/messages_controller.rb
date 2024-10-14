@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.turbo_stream
+        format.turbo_stream { render turbo_stream: turbo_stream.remove("does-not-exist") }
       end
     end
   end
