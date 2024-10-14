@@ -11,6 +11,7 @@
   <% end %>
 
   <%= turbo_frame_tag "new_messages" %>
+  <%= turbo_stream_from "chat_room_", channel: ChatRoomChannel, data: { chat_room_id: @chat_room.id } %>
 
   <%= form_with(model: Message.new, url: chat_room_messages_path, remote: true ) do |f| %>
     <%= f.text_field :content %>
