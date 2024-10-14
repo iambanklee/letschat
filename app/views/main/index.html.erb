@@ -1,1 +1,15 @@
-<h1>Hello, <%= current_user.display_name %></h1>
+<h1>Hello, <%= @current_user.display_name %></h1>
+
+<%= turbo_frame_tag "my_chat_rooms_area" do %>
+  <%= render partial: 'chat_rooms/my_chat_room_area', locals: { my_chat_rooms: @my_chat_rooms } %>
+<% end  %>
+
+<div class="new_chat_room">
+  <%= turbo_frame_tag "new_chat_room" do %>
+    <%= link_to "Create new chatroom", new_chat_room_path, data: { turbo_stream: "new_chat_room"} %>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag "other_chat_rooms_area" do %>
+  <%= render partial: 'chat_rooms/other_chat_rooms_area', locals: { other_chat_rooms: @other_chat_rooms } %>
+<% end  %>

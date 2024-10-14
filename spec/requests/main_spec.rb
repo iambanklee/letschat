@@ -7,8 +7,11 @@ RSpec.describe "Mains", type: :request do
 
   context "with signed in user" do
     describe "GET /index" do
+      subject(:request) { get "/main/index" }
+
       it "returns http success" do
-        get "/main/index"
+        request
+
         expect(response).to have_http_status(:success)
       end
     end

@@ -1,0 +1,7 @@
+<%= turbo_stream.update "new_chat_room" do %>
+  <%= link_to "Create new chatroom", new_chat_room_path, data: { turbo_stream: "new_chat_room"} %>
+<% end %>
+
+<%= turbo_stream.append "other_chat_rooms" do %>
+  <%= render partial: 'chat_rooms/other_chat_room', locals: { chat_room: @chat_room } %>
+<% end %>

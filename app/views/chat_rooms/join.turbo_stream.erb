@@ -1,0 +1,7 @@
+<%= turbo_stream.update "my_chat_rooms_area" do %>
+  <%= render partial: 'chat_rooms/my_chat_room_area', locals: { my_chat_rooms: @my_chat_rooms } %>
+<% end %>
+
+<%= turbo_stream.update "other_chat_rooms_area" do %>
+  <%= render partial: 'chat_rooms/other_chat_rooms_area', locals: { other_chat_rooms: @other_chat_rooms } %>
+<% end %>

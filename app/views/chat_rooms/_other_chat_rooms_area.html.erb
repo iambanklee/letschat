@@ -1,0 +1,10 @@
+<div class="other_chat_rooms">
+  <h2>Other chat rooms</h2>
+
+  <ol>
+    <% other_chat_rooms.each do |chat_room| %>
+      <%= render partial: 'chat_rooms/other_chat_room', locals: { chat_room: chat_room } %>
+    <% end %>
+    <%= turbo_frame_tag "other_chat_rooms" %>
+  </ol>
+</div>
