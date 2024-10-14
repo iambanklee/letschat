@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @chat_room = ChatRoom.find(params[:chat_room_id])
-    @messages = @chat_room.messages.order(:created_at)
+    @messages = @chat_room.messages.includes(:user).order(:created_at)
     @chat_room_users = ChatRoomUser.where(chat_room: @chat_room)
 
     respond_to do |format|
