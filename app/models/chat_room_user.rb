@@ -8,6 +8,7 @@ class ChatRoomUser < ApplicationRecord
   def update_chat_room_user_counter
     chat_room_user_counter = ChatRoomUser.where(chat_room: chat_room).size
 
-    broadcast_update_to "chat_room_#{chat_room_id}", target: "chat_room_user_count", html: "<p>users in this room:#{chat_room_user_counter}</p>"
+    broadcast_update_to "chat_room_#{chat_room_id}", target: "chat_room_user_count",
+                        partial: "chat_rooms/chat_room_user_counter", locals: { chat_room_user_counter: chat_room_user_counter}
   end
 end
