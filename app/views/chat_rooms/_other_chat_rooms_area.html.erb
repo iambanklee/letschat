@@ -6,5 +6,6 @@
       <%= render partial: 'chat_rooms/other_chat_room', locals: { chat_room: chat_room } %>
     <% end %>
     <%= turbo_frame_tag "other_chat_rooms" %>
+    <%= turbo_stream_from "chat_room_", channel: ChatRoomChannel %>
   </ol>
 </div>
