@@ -36,11 +36,11 @@ class ChatRoomsController < ApplicationController
     @chat_room_user = current_user.chat_room_users.find_by(chat_room: chat_room)
 
     respond_to do |format|
-      if @chat_room_user.delete
+      if @chat_room_user.destroy
         @my_chat_rooms = @current_user.chat_rooms
         @other_chat_rooms = ChatRoom.all - @my_chat_rooms
 
-        format.turbo_stream { render :join }
+        format.turbo_stream
       end
     end
   end

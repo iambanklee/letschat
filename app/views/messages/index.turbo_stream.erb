@@ -2,7 +2,7 @@
   <h2>Chat room: <%= @chat_room.name %></h2>
 
   <%= turbo_frame_tag "chat_room_user_count" do %>
-    <p>users in this room:<%= @chat_room_users.size %></p>
+    <%= render partial: 'chat_rooms/chat_room_user_counter', locals: { chat_room_user_counter: @chat_room_users.size } %>
   <% end %>
 
   <h3>Messages:</h3>
