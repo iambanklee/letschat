@@ -45,16 +45,6 @@ class ChatRoomsController < ApplicationController
     end
   end
 
-  def show
-    @chat_room = ChatRoom.find(params[:id])
-    @messages = @chat_room.messages.order(:created_at)
-    @chat_room_users = ChatRoomUser.where(chat_room: @chat_room)
-
-    respond_to do |format|
-      format.turbo_stream
-    end
-  end
-
   private
 
   def chat_room_params

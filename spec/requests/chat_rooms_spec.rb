@@ -113,23 +113,4 @@ RSpec.describe "ChatRooms", type: :request do
 
     include_context "invalid_chat_room"
   end
-
-  describe "GET /chat_rooms/:id/show" do
-    subject(:request) do
-      get chat_room_path(chat_room), as: :turbo_stream
-    end
-
-    context "when chat room exist" do
-      let(:chat_room) { create(:chat_room) }
-
-      it "returns http success" do
-        request
-
-        expect(response).to have_http_status(:success)
-        expect(response.body).to include(/<turbo-stream action="update" target="chat_room_messages_area">/)
-      end
-    end
-
-    include_context "invalid_chat_room"
-  end
 end
