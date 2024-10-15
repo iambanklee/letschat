@@ -46,6 +46,14 @@ RSpec.describe "ChatRooms", type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include(/<turbo-stream action="update" target="new_chat_room">/)
       end
+
+      it "creates a chat room" do
+        expect { request }.to change(ChatRoom, :count).by(1)
+
+        chat_room = ChatRoom.last
+
+        expect(chat_room.name).to eq("chat_room_1")
+      end
     end
 
     context "with invalid chat room params" do

@@ -13,7 +13,7 @@ RSpec.describe ChatRoom, type: :model do
         expect { chat_room_creation }
           .to have_broadcasted_to("chat_room_")
           .from_channel(ChatRoomChannel)
-          .with(/turbo-stream action="append".*other_chat_rooms/).once
+          .with(/turbo-stream action="append" target="other_chat_rooms".*#{chat_room.name}/m).once
       end
     end
   end
