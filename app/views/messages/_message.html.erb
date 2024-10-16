@@ -1,2 +1,6 @@
-<p><%= message.user.display_name %></p>
-<p><%= message.content %></p>
+<div class="<%= message.user == @current_user ? "sent-message" : "user_#{message.user.id}" %>">
+  <div>
+    <p><%= message.user.display_name %></p>
+    <p><%= message.content %></p>
+  </div>
+</div>

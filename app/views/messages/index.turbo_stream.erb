@@ -20,7 +20,7 @@
   <%= turbo_stream_from "chat_room_", channel: ChatRoomChannel, data: { chat_room_id: @chat_room.id } %>
 
   <div class="card p-3">
-    <%= form_with(model: Message.new, url: chat_room_messages_path, remote: true, data: {controller: "messages", action: "turbo:submit-end->messages#clear"} ) do |f| %>
+    <%= form_with(model: Message.new, url: chat_room_messages_path, remote: true, data: {controller: "messages", action: "turbo:submit-end->messages#clear", sender_uuid: current_user.id} ) do |f| %>
       <div class="mb-3">
         <%= f.text_field :content, class: "form-control", required: true %>
       </div>
