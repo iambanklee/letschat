@@ -1,20 +1,32 @@
 <%= turbo_stream.update "chat_room_messages_area" do %>
-  <h2>Chat room: <%= @chat_room.name %></h2>
+  <h2 class="text-center mb-4">Chat room: <%= @chat_room.name %></h2>
 
   <%= turbo_frame_tag "chat_room_user_count" do %>
-    <%= render partial: 'chat_rooms/chat_room_user_counter', locals: { chat_room_user_counter: @chat_room_users.size } %>
+    <div class="alert alert-info">
+      <%= render partial: 'chat_rooms/chat_room_user_counter', locals: { chat_room_user_counter: @chat_room_users.size } %>
+    </div>
   <% end %>
 
-  <h3>Messages:</h3>
-  <% @messages.each do |message| %>
-    <%= render partial: 'messages/message', locals: { message: message } %>
-  <% end %>
+  <h3 class="mb-4">Messages:</h3>
+
+  <div class="list-group mb-3">
+    <% @messages.each do |message| %>
+      <%= render partial: 'messages/message', locals: { message: message } %>
+    <% end %>
+  </div>
 
   <%= turbo_frame_tag "new_messages" %>
+
   <%= turbo_stream_from "chat_room_", channel: ChatRoomChannel, data: { chat_room_id: @chat_room.id } %>
 
-  <%= form_with(model: Message.new, url: chat_room_messages_path, remote: true, data: {controller: "messages", action: "turbo:submit-end->messages#clear"} ) do |f| %>
-    <%= f.text_field :content %>
-    <%= f.submit "Send" %>
-  <% end %>
+  <div class="card p-3">
+    <%= form_with(model: Message.new, url: chat_room_messages_path, remote: true, data: {controller: "messages", action: "turbo:submit-end->messages#clear"} ) do |f| %>
+      <div class="mb-3">
+        <%= f.text_field :content, class: "form-control", required: true %>
+      </div>
+      <div class="d-grid">
+        <%= f.submit "Send", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

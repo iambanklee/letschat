@@ -1,19 +1,25 @@
-<h1>Hello, <%= @current_user.display_name %></h1>
+<div class="row">
+  <div class="col-md-4 col-lg-2">
+    <h1>Hello, <%= @current_user.display_name %></h1>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
 
-<%= turbo_frame_tag "my_chat_rooms_area" do %>
-  <%= render partial: 'chat_rooms/my_chat_room_area', locals: { my_chat_rooms: @my_chat_rooms } %>
-<% end  %>
+    <%= turbo_frame_tag "my_chat_rooms_area" do %>
+      <%= render partial: 'chat_rooms/my_chat_room_area', locals: { my_chat_rooms: @my_chat_rooms } %>
+    <% end  %>
 
-<div class="new_chat_room">
-  <%= turbo_frame_tag "new_chat_room" do %>
-    <%= link_to "Create new chatroom", new_chat_room_path, data: { turbo_stream: "new_chat_room"} %>
-  <% end %>
-</div>
+    <div class="new_chat_room">
+      <%= turbo_frame_tag "new_chat_room" do %>
+        <%= link_to "Create new chatroom", new_chat_room_path, data: { turbo_stream: "new_chat_room"} %>
+      <% end %>
+    </div>
 
-<%= turbo_frame_tag "other_chat_rooms_area" do %>
-  <%= render partial: 'chat_rooms/other_chat_rooms_area', locals: { other_chat_rooms: @other_chat_rooms } %>
-<% end  %>
-
-<div id="char_room_messages">
-  <%= turbo_frame_tag "chat_room_messages_area" %>
+    <%= turbo_frame_tag "other_chat_rooms_area" do %>
+      <%= render partial: 'chat_rooms/other_chat_rooms_area', locals: { other_chat_rooms: @other_chat_rooms } %>
+    <% end  %>
+  </div>
+  <div class="col-md-8  col-lg-10">
+    <div id="char_room_messages">
+      <%= turbo_frame_tag "chat_room_messages_area" %>
+    </div>
+  </div>
 </div>
