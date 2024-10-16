@@ -1,5 +1,7 @@
 # Let's chat
 
+https://letschat-wawa.fly.dev/
+
 This is a simple chat app implemented in Rails
 
 App features:
