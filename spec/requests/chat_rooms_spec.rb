@@ -67,7 +67,6 @@ RSpec.describe "ChatRooms", type: :request do
         expect(response).to have_http_status(400)
       end
     end
-
   end
 
   describe "GET /chat_rooms/:id/join" do
