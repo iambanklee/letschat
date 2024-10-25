@@ -211,7 +211,7 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.8)
+    pg (1.5.9)
     popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -406,7 +406,7 @@ DEPENDENCIES
   guard-rspec
   importmap-rails
   jbuilder
-  pg (~> 1.1)
+  pg (~> 1.5)
   puma (>= 5.0)
   rails (~> 7.2.1)
   redis (>= 4.0.1)
